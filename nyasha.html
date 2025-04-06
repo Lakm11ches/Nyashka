@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Личный уголок Няшки</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hearts-container">
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+        <div class="heart"></div>
+      </div>    
+      
+      <div class="floating-player">
+        <label for="songSelect">🎶</label>
+        <select id="songSelect">
+          <option value="Toxi$ - November.mp3">November</option>
+          <option value="toxi-hurtz.mp3">Hurtz</option>
+          <option value="toxi-dante.mp3">Dante</option>
+        </select>
+        <audio id="audioPlayer" controls></audio>
+      </div>
+      
+  <div class="preloader" id="preloader">
+    <img src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Котик загрузка">
+    <p>Загружается няшность...</p>
+  </div>
+
+    <section class="welcome_sect">
+        <div class="container" id="mainContent" style="display: none;">
+          <h1 class="rainbow-text">Добро пожаловать в личный уголок 🌸</h1>
+            <p>Здесь живёт уют, тепло и немного дрейн-магии для прекрасной няшки ✨</p>
+        </div>
+    </section>
+
+    <section class="fotogallery">
+        <h2>📷 Милая галерея</h2>
+        <div class="gallery">
+            <figure class="photo-card">
+            <img src="foto/tigr.jpg" alt="Милый котик">
+            <figcaption class="caption">НетИдиНаху 🤪</figcaption>
+            </figure>
+            
+            <figure class="photo-card">
+            <img src="foto/eyes.jpg" alt="Ещё один котик">
+            <figcaption class="caption">какие глазки красивые ✨</figcaption>
+            </figure>
+        </div>
+    </section>
+
+    <section class="meow-section section">
+        <h2>🐱 Особенный котик</h2>
+        <div class="gallery"> <!-- Используем общую обёртку для единообразия -->
+          <figure class="photo-card meow-card">
+            <img src="foto/кэт.jpg" alt="Особенный котик" id="meowImage">
+            <figcaption class="caption">мяу мяу мяу~ 🎵</figcaption>
+          </figure>
+        </div>
+        <audio id="meowSound" src="miau.mp3" preload="auto"></audio>
+      </section>
+      
+      <section class="facts_sect section">
+        <h2>3 факта обо мне 💭</h2>
+        <div class="facts-buttons">
+          <button class="fact-btn" data-fact="1">1 факт</button>
+          <button class="fact-btn" data-fact="2">2 факт(by ILona)</button>
+          <button class="fact-btn" data-fact="3">3 факт</button>
+        </div>
+        <div id="fact-output" class="fact-text"></div>
+      </section>
+      
+
+      <footer class="cute-footer">
+        <p>Сделано для самой няшной 🌸<br><span class="author-text">~ ну как?] ~</span></p>
+      </footer>      
+
+      <script>
+        window.addEventListener("load", () => {
+          const preloader = document.getElementById("preloader");
+          const content = document.getElementById("mainContent");
+      
+          setTimeout(() => {
+            preloader.classList.add("hidden");
+            content.style.display = "flex";
+      
+            setTimeout(() => {
+              content.classList.add("move-up");
+              document.querySelectorAll(".section").forEach((sec, i) => {
+                setTimeout(() => sec.classList.add("visible"), 500 + i * 300);
+              });
+            }, 1000);
+          }, 2000);
+        });
+      
+        document.querySelectorAll('.photo-card').forEach(card => {
+          card.addEventListener('click', () => {
+            card.classList.toggle('clicked');
+          });
+        });
+      
+        // Звук для котика
+        const meowImage = document.getElementById("meowImage");
+        const meowSound = document.getElementById("meowSound");
+      
+        if (meowImage && meowSound) {
+          meowImage.addEventListener("click", () => {
+            meowSound.currentTime = 0;
+            meowSound.play();
+          });
+        }
+
+          document.querySelectorAll('.fact-btn').forEach(button => {
+          button.addEventListener('click', () => {
+            const factBox = document.getElementById('fact-output');
+            const num = button.dataset.fact;
+
+            factBox.style.opacity = 0;
+
+            setTimeout(() => {
+              if (num === "1") {
+                factBox.textContent = "Я милейшая дрейн няшка👀";
+              }
+
+              if (num === "2") {
+                factBox.textContent = "бля ну";
+                setTimeout(() => {
+                  factBox.textContent = "хз даже";
+                  factBox.classList.add("animate-fade");
+                }, 1000);
+              }
+
+              if (num === "3") {
+                factBox.textContent = "Я люблю Киру🤮";
+                setTimeout(() => {
+                  factBox.textContent = "я люблю Леру (май лав❤️), а Кира шлюха";
+                  factBox.classList.add("animate-fade");
+                }, 2000);
+              }
+
+              factBox.style.opacity = 1;
+            }, 300);
+          });
+        });
+
+        const audio = document.getElementById("audioPlayer");
+        const selector = document.getElementById("songSelect");
+
+        window.addEventListener("DOMContentLoaded", () => {
+          audio.src = selector.value;
+          audio.volume = 0.1;
+          audio.play().catch(() => {}); // автозапуск может быть заблокирован, это нормально
+        });
+
+        selector.addEventListener("change", () => {
+          audio.src = selector.value;
+          audio.play();
+        });
+
+      </script>
+      
+
+</body>
+</html>
