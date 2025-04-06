@@ -392,23 +392,47 @@ p {
   }
 }
 
+.floating-player {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #2b2b2b;
+  border: 2px #ffc0f0;
+  border-radius: 12px;
+  padding: 0.5rem;
+  box-shadow: 0 0 10px rgba(245, 194, 231, 0.5);
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Comic Sans MS', cursive;
+  font-size: 0.85rem;
+  opacity: 0.95;
+  transition: transform 0.3s ease;
+  max-height: unset;
+  height: auto;
+}
+
+.floating-player:hover {
+  transform: scale(1.03);
+}
+
 .floating-player label {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-bottom: 0.2rem;
   color: #ffc0f0;
-  text-shadow: 0 0 5px #f5c2e7;
+  text-shadow: 0 0 6px #f5c2e7;
 }
 
 .floating-player select {
-  margin: 0.3rem 0;
   background-color: #1a1a1a;
   color: #ffc0f0;
   border: 1px solid #ffc0f0;
-  border-radius: 8px;
-  padding: 0.3rem 0.6rem;
-  font-size: 0.95rem;
+  border-radius: 6px;
+  padding: 0.2rem 0.4rem;
+  font-size: 0.75rem;
   transition: all 0.3s ease;
-  box-shadow: 0 0 5px rgba(255, 192, 203, 0.3);
+  box-shadow: 0 0 6px rgba(255, 192, 203, 0.3);
 }
 
 .floating-player select:hover {
@@ -417,13 +441,13 @@ p {
 }
 
 .floating-player audio {
-  width: 200px;
-  margin-top: 0.3rem;
+  width: 140px;
+  height: 32px; /* 👈 фиксированная высота */
+  margin-top: 0.2rem;
   filter: drop-shadow(0 0 4px #ffc0f0);
-  border-radius: 8px;
+  border-radius: 6px;
+  display: block;
 }
-
-
 
 
 .cute-footer {
