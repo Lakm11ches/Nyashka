@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
     <div class="hearts-container">
         <div class="heart"></div>
         <div class="heart"></div>
@@ -14,7 +15,7 @@
         <div class="heart"></div>
         <div class="heart"></div>
       </div>    
-      
+
       <div class="floating-player">
         <label for="songSelect">🎶 Музычка</label>
         <select id="songSelect">
@@ -36,7 +37,6 @@
             <p>Здесь живёт уют, тепло и немного дрейн-магии для прекрасной няшки ✨</p>
         </div>
     </section>
-
     <section class="fotogallery">
         <h2>📷 Милая галерея</h2>
         <div class="gallery">
@@ -71,6 +71,30 @@
           <button class="fact-btn" data-fact="3">3 факт</button>
         </div>
         <div id="fact-output" class="fact-text"></div>
+      </section>
+
+      <div id="secret-cat" class="secret-decor cat" style="top: 45%; left: 5%;"></div>
+
+      <!-- Скрытое окошко -->
+      <div id="secret-message" class="secret-popup">
+        <p>✨ отправь мне любой стикер и ожидай пару минут ✨</p>
+        <button onclick="closeSecret()">Закрыть</button>
+      </div>
+
+      <section id="secret-trigger" style="text-align: center; margin: 80px 0;">
+        <h2 style="color: #ffc4f4; font-family: 'Comic Sans MS', cursive;">✨ хочешь получить подарок после которого ты перестанешь плаки плаки? ЖМИ И НАЙДИ КОТИКА(и я не про тебя сейчас) ✨</h2>
+        <button id="show-secret-cat" style="
+          margin-top: 20px;
+          padding: 10px 20px;
+          background-color: #ffaad4;
+          border: none;
+          border-radius: 12px;
+          font-family: 'Comic Sans MS', cursive;
+          font-size: 16px;
+          cursor: pointer;
+          color: #1e1e1e;
+          box-shadow: 0 0 8px #ffaad4;
+        ">Показать котика</button>
       </section>
       
 
@@ -158,6 +182,26 @@
         selector.addEventListener("change", () => {
           audio.src = selector.value;
           audio.play();
+        });
+
+        const secretCat = document.getElementById('secret-cat');
+        const secretMessage = document.getElementById('secret-message');
+
+        secretCat.addEventListener('click', () => {
+          secretMessage.style.display = 'block';
+        });
+
+        function closeSecret() {
+          secretMessage.style.display = 'none';
+        }
+
+        const showCatBtn = document.getElementById('show-secret-cat');
+
+        showCatBtn.addEventListener('click', () => {
+          secretCat.style.display = 'block';
+          setTimeout(() => {
+            secretCat.style.opacity = '0.15'; // плавное появление
+          }, 50);
         });
 
       </script>

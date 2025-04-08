@@ -450,6 +450,72 @@ p {
 }
 
 
+.secret-decor.cat {
+  background-image: url('foto/tinycat2.png');
+  background-size: cover;
+}
+
+#secret-cat {
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  z-index: 3;
+  position: fixed;
+  right: 200px;
+}
+
+/* Тайный котик — слегка спрятан */
+#secret-cat {
+  display: none; /* изначально скрыт */
+  opacity: 0.05;
+  cursor: pointer;
+  z-index: 20;
+  animation: glowing 2s ease infinite;
+}
+
+/* Popup окошко */
+.secret-popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1e1e1e;
+  color: #ffc4f4;
+  padding: 20px 30px;
+  border: 2px solid #ffaad4;
+  border-radius: 12px;
+  z-index: 999;
+  box-shadow: 0 0 12px #ffaad4;
+  font-family: 'Comic Sans MS', cursive;
+  text-align: center;
+}
+
+.secret-popup button {
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: #ffaad4;
+  border: none;
+  border-radius: 8px;
+  color: #000;
+  cursor: pointer;
+}
+
+@keyframes glowing {
+  0%{
+    opacity: 0;
+    transform: scale(1);
+  }
+  50%{
+    opacity: 0.04;
+    transform: scale(1.2);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
 .cute-footer {
   background: #2c2c2c;
   color: #f5c2e7;
@@ -475,3 +541,4 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
